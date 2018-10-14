@@ -1,4 +1,4 @@
-const lib = require("./array_operations.js");
+const lib = require("./array_operations_first_15.js");
 const assert = require("assert");
 
 let evenNumbers = lib.selectEven;
@@ -13,6 +13,8 @@ let mappingLength = lib.mappingLength;
 let countOdd = lib.countOdd;
 let countEven = lib.countEven;
 let countNoAbove = lib.countNoAbove;
+let countNoBelow = lib.countNoBelow;
+let revOfArrayElement = lib.revOfArrayElement;
 
 assert.deepEqual(evenNumbers([2]),[2]);
 assert.deepEqual(oddNumbers([1]),[1]);
@@ -27,3 +29,5 @@ assert.deepEqual(mappingLength(["mary","had","a","little","lamb"]),[4, 3, 1, 6, 
 assert.equal(countOdd([1,26,3,4,1]),3);
 assert.equal(countEven([1,26,3,4,1]),2);
 assert.equal(countNoAbove([3,4,5,6,1],4),2);
+assert.equal(countNoBelow([3,4,5,6,1],4),2);
+assert.deepEqual(revOfArrayElement([1,2,3]),[3,2,1]);

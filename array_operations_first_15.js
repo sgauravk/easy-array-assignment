@@ -5,7 +5,7 @@ const isEven = function(number){
   return condition;
 }
 
-//Mapping lengths - Given a list of names, generate another array that contains the length of each of the names:
+//decide a number is odd or not - return the answer in true false
 
 const isOdd = function(number){
   condition = (number % 2 == 1);
@@ -40,7 +40,7 @@ const selectOdd = function(numbers){
 
 const sumOfArrayElement = function(numbers){
   let sum = 0;
-  for(index=0; index<numbers.length; index++){
+  for(let index=0; index<numbers.length; index++){
     sum = sum+numbers[index];
   }
   return sum;
@@ -49,11 +49,12 @@ const sumOfArrayElement = function(numbers){
 //Printing reverse - Given a list of numbers, PRINT the list in reverse order
 
 const reverseList = function(numbers){
-  let revNum = [];
-  for(index = numbers.length-1; index>=0; index--){
-    revNum[(numbers.length-1) - index] = numbers[index];
+  for(let index = 0; index<=(numbers.length-1)/2; index++){
+    storeElement = numbers[index];
+    numbers[index] = numbers[numbers.length-1-index]
+    numbers[numbers.length-1-index] = storeElement;
   }
-  return revNum;
+  return numbers;
 }
 
 //Selecting every second element - Given a list of numbers, select every second one
@@ -61,7 +62,7 @@ const reverseList = function(numbers){
 const salectingEach2No = function(numbers){
   let each2NoArray = [];
   let count = 0;
-  for(index=0; index<numbers.length; index+=2){
+  for(let index=0; index<numbers.length; index+=2){
     each2NoArray[count] = numbers[index];
     count++;
   }
@@ -72,7 +73,7 @@ const salectingEach2No = function(numbers){
 
 const gretestNoInList = function(numbers){
   let gretestNo = numbers[0];
-  for(index=1; index<numbers.length; index++){
+  for(let index=1; index<numbers.length; index++){
     if(numbers[index] > gretestNo){
       gretestNo = numbers[index]
     }
@@ -84,7 +85,7 @@ const gretestNoInList = function(numbers){
 
 const lowestNoInList = function(numbers){
   let lowestNo = numbers[0];
-  for(index=1; index<numbers.length; index++){
+  for(let index=1; index<numbers.length; index++){
     if(numbers[index] < lowestNo){
       lowestNo = numbers[index]
     }
@@ -96,7 +97,7 @@ const lowestNoInList = function(numbers){
 
 const averageOfList = function(numbers){
   let sumOfList = 0;
-  for(index=0; index<numbers.length; index++){
+  for(let index=0; index<numbers.length; index++){
     sumOfList = sumOfList + numbers[index];
   }
   return sumOfList/numbers.length;
@@ -106,7 +107,7 @@ const averageOfList = function(numbers){
 
 const mappingLength = function(numbers){
   let mappingLengthArray = [];
-  for(index=0; index<numbers.length; index++){
+  for(let index=0; index<numbers.length; index++){
     mappingLengthArray[index] = numbers[index].length;
   }
   return mappingLengthArray;
@@ -116,7 +117,7 @@ const mappingLength = function(numbers){
 
 const countOdd = function(numbers){
   let count = 0;
-  for(index=0; index<numbers.length; index++){
+  for(let index=0; index<numbers.length; index++){
     if(isOdd(numbers[index])){
       count++;
     }
@@ -128,7 +129,7 @@ const countOdd = function(numbers){
 
 const countEven = function(numbers){
   let count = 0;
-  for(index=0; index<numbers.length; index++){
+  for(let index=0; index<numbers.length; index++){
     if(isEven(numbers[index])){
       count++;
     }
@@ -140,12 +141,34 @@ const countEven = function(numbers){
 
 const countNoAbove = function(numbers,range){
   let count = 0;
-  for(index=0; index<numbers.length; index++){
+  for(let index=0; index<numbers.length; index++){
     if(numbers[index] > range){
       count++;
     }
   }
   return count;
+}
+
+//Count how many numbers below a certain threshold in an array
+
+const countNoBelow = function(numbers,range){
+  let count = 0;
+  for(let index=0; index<numbers.length; index++){
+    if(numbers[index] < range){
+      count++;
+    }
+  }
+  return count;
+}
+
+//Reversing an Array - Given an array, write a function that provides a reversed version of the same array *without* changing the contents of the original array.
+
+const revOfArrayElement = function(numbers){
+  let revArray = [];
+  for(let index=numbers.length-1; index>=0; index--){
+    revArray[numbers.length-1-index] = numbers[index];
+  }
+  return revArray
 }
 
 exports.selectEven = selectEven;
@@ -160,3 +183,5 @@ exports.mappingLength = mappingLength;
 exports.countOdd = countOdd;
 exports.countEven = countEven;
 exports.countNoAbove = countNoAbove;
+exports.countNoBelow = countNoBelow;
+exports.revOfArrayElement = revOfArrayElement;
