@@ -11,6 +11,8 @@ let lowestNoInList = lib.lowestNoInList;
 let averageOfList = lib.averageOfList;
 let mappingLength = lib.mappingLength;
 let countOdd = lib.countOdd;
+let countEven = lib.countEven;
+let countNoAbove = lib.countNoAbove;
 
 assert.deepEqual(evenNumbers([2]),[2]);
 assert.deepEqual(oddNumbers([1]),[1]);
@@ -23,3 +25,5 @@ assert.equal(lowestNoInList([1,26,3,5]),1);
 assert.equal(averageOfList([1,26,3,4,1]),7);
 assert.deepEqual(mappingLength(["mary","had","a","little","lamb"]),[4, 3, 1, 6, 4]);
 assert.equal(countOdd([1,26,3,4,1]),3);
+assert.equal(countEven([1,26,3,4,1]),2);
+assert.equal(countNoAbove([3,4,5,6,1],4),2);

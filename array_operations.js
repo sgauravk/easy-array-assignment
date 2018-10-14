@@ -124,6 +124,30 @@ const countOdd = function(numbers){
   return count;
 }
 
+//Counting even numbers - Write a function to count how many even numbers are present in an array
+
+const countEven = function(numbers){
+  let count = 0;
+  for(index=0; index<numbers.length; index++){
+    if(isEven(numbers[index])){
+      count++;
+    }
+  }
+  return count;
+}
+
+//Count how many numbers above a certain threshold in an array
+
+const countNoAbove = function(numbers,range){
+  let count = 0;
+  for(index=0; index<numbers.length; index++){
+    if(numbers[index] > range){
+      count++;
+    }
+  }
+  return count;
+}
+
 exports.selectEven = selectEven;
 exports.selectOdd = selectOdd;
 exports.sumOfArrayElement = sumOfArrayElement;
@@ -134,3 +158,5 @@ exports.lowestNoInList = lowestNoInList;
 exports.averageOfList = averageOfList;
 exports.mappingLength = mappingLength;
 exports.countOdd = countOdd;
+exports.countEven = countEven;
+exports.countNoAbove = countNoAbove;
