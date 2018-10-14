@@ -112,6 +112,17 @@ const mappingLength = function(numbers){
   return mappingLengthArray;
 }
 
+//Counting odd numbers - Write a function to count how many odd numbers are present in an array
+
+const countOdd = function(numbers){
+  let count = 0;
+  for(index=0; index<numbers.length; index++){
+    if(isOdd(numbers[index])){
+      count++;
+    }
+  }
+  return count;
+}
 
 exports.selectEven = selectEven;
 exports.selectOdd = selectOdd;
@@ -122,3 +133,4 @@ exports.gretestNoInList = gretestNoInList;
 exports.lowestNoInList = lowestNoInList;
 exports.averageOfList = averageOfList;
 exports.mappingLength = mappingLength;
+exports.countOdd = countOdd;
