@@ -66,6 +66,21 @@ const salectingEach2No = function(numbers){
   return each2NoArray;
 }
 
+//Reverse Fibonacci - Generate a fibonacci sequence of length n in reverse order
+
+const reverseFibonacciList = function(range){
+  let firstTerm = 0;
+  let secondTerm = 1;
+  let fiboNoList = [firstTerm,secondTerm];
+  for(let index=2; index<range; index++){
+    let element = firstTerm+secondTerm;
+    fiboNoList.push(element);
+    firstTerm = secondTerm;
+    secondTerm = element;
+  }
+  return reverseList(fiboNoList);
+}
+
 //Greatest number in a list - Given a list of numbers, find the greatest number in that sequence
 
 const gretestNoInList = function(numbers){
@@ -357,6 +372,7 @@ exports.selectOdd = selectOdd;
 exports.sumOfArrayElement = sumOfArrayElement;
 exports.reverseList = reverseList;
 exports.salectingEach2No = salectingEach2No;
+exports.reverseFibonacciList = reverseFibonacciList;
 exports.gretestNoInList = gretestNoInList;
 exports.lowestNoInList = lowestNoInList;
 exports.averageOfList = averageOfList;

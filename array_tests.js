@@ -27,6 +27,7 @@ let isProperSubset = lib.isProperSubset;
 let createZipArray = lib.createZipArray;
 let rotateList = lib.rotateList;
 let doPartitian = lib.doPartitian;
+let reverseFibonacciList = lib.reverseFibonacciList;
 
 
 assert.equal(firstOccaranceOfNo([1,2,3,2,3],3),2);
@@ -113,6 +114,10 @@ assert.deepEqual(salectingEach2No([1,2,3,4,5,6]),[1,3,5]);
 assert.deepEqual(salectingEach2No([1,0,1,0,1,0]),[1,1,1]);
 assert.deepEqual(salectingEach2No([]),[]);
 assert.deepEqual(salectingEach2No([0,0,0,0,0]),[0,0,0]);
+
+assert.deepEqual(reverseFibonacciList(2),[1,0]);
+assert.deepEqual(reverseFibonacciList([3]),[1,1,0]);
+assert.deepEqual(reverseFibonacciList([8]),[13,8,5,3,2,1,1,0]);
 
 assert.equal(gretestNoInList([1,26,3,5]),26);
 assert.equal(gretestNoInList([]),undefined);
