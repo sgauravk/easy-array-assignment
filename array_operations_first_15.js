@@ -8,7 +8,7 @@ const isEven = function(number){
 //decide a number is odd or not - return the answer in true false
 
 const isOdd = function(number){
-  condition = (number % 2 == 1);
+  condition = (Math.abs(number % 2) == 1);
   return condition;
 }
 
