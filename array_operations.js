@@ -336,18 +336,22 @@ const rotateList = function(list,numberToRotate){
   return rotateArray;
 }
 
+//Partition - Given an array of numbers, it returns a partitioned array consisting of numbers above a certain number and below a certain number
 
-exports.firstOccaranceOfNo = firstOccaranceOfNo;
-exports.isListAscending = isListAscending;
-exports.isListDecending = isListDecending;
-exports.ExtractDigitInArray = ExtractDigitInArray;
-exports.uniqueArray = uniqueArray;
-exports.unianList = unianList;
-exports.intersactionList = intersactionList;
-exports.differanceBwArray = differanceBwArray;
-exports.isProperSubset = isProperSubset;
-exports.createZipArray = createZipArray;
-exports.rotateList = rotateList;
+const doPartitian = function(numbers,range){
+  let partitianArray = [[],[]];
+  for(let index=0; index<numbers.length; index++){
+    if(numbers[index] <= range){
+      partitianArray[0].push(numbers[index]);
+    }
+    if(numbers[index] > range){
+      partitianArray[1].push(numbers[index]);
+    }
+  }
+  return partitianArray;
+}
+
+
 exports.selectEven = selectEven;
 exports.selectOdd = selectOdd;
 exports.sumOfArrayElement = sumOfArrayElement;
@@ -362,3 +366,15 @@ exports.countEven = countEven;
 exports.countNoAbove = countNoAbove;
 exports.countNoBelow = countNoBelow;
 exports.revOfArrayElement = revOfArrayElement;
+exports.firstOccaranceOfNo = firstOccaranceOfNo;
+exports.isListAscending = isListAscending;
+exports.isListDecending = isListDecending;
+exports.ExtractDigitInArray = ExtractDigitInArray;
+exports.uniqueArray = uniqueArray;
+exports.unianList = unianList;
+exports.intersactionList = intersactionList;
+exports.differanceBwArray = differanceBwArray;
+exports.isProperSubset = isProperSubset;
+exports.createZipArray = createZipArray;
+exports.rotateList = rotateList;
+exports.doPartitian = doPartitian;
