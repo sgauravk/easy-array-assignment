@@ -122,6 +122,7 @@ assert.deepEqual(reverseFibonacciList([8]),[13,8,5,3,2,1,1,0]);
 assert.equal(gretestNoInList([1,26,3,5]),26);
 assert.equal(gretestNoInList([]),undefined);
 assert.equal(gretestNoInList([0,-1,-2,-3]),0);
+assert.equal(gretestNoInList([0]),0);
 
 assert.equal(lowestNoInList([1,26,3,5]),1);
 assert.equal(lowestNoInList([]),undefined);
