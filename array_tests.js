@@ -5,7 +5,7 @@ let evenNumbers = lib.selectEven;
 let oddNumbers = lib.selectOdd;
 let sumOfArrayElement = lib.sumOfArrayElement;
 let reverseList = lib.reverseList; 
-let salectingEach2No = lib.salectingEach2No;
+let selectingEvery2ndNo = lib.selectingEvery2ndNo;
 let gretestNoInList = lib.gretestNoInList;
 let lowestNoInList = lib.lowestNoInList;
 let averageOfList = lib.averageOfList;
@@ -110,10 +110,10 @@ assert.deepEqual(reverseList([]),[]);
 assert.deepEqual(reverseList([1]),[1]);
 assert.deepEqual(reverseList([-1,0,1]),[1,0,-1]);
 
-assert.deepEqual(salectingEach2No([1,2,3,4,5,6]),[1,3,5]);
-assert.deepEqual(salectingEach2No([1,0,1,0,1,0]),[1,1,1]);
-assert.deepEqual(salectingEach2No([]),[]);
-assert.deepEqual(salectingEach2No([0,0,0,0,0]),[0,0,0]);
+assert.deepEqual(selectingEvery2ndNo([1,2,3,4,5,6]),[1,3,5]);
+assert.deepEqual(selectingEvery2ndNo([1,0,1,0,1,0]),[1,1,1]);
+assert.deepEqual(selectingEvery2ndNo([]),[]);
+assert.deepEqual(selectingEvery2ndNo([0,0,0,0,0]),[0,0,0]);
 
 assert.deepEqual(reverseFibonacciList(2),[1,0]);
 assert.deepEqual(reverseFibonacciList([3]),[1,1,0]);

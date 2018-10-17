@@ -11,6 +11,7 @@ const isOdd = function(number){
 }
 
 //Selecting even numbers - Given a list of numbers, select the ones that are even
+
 const selectEven = function(numbers){
   let evenNumbers = [];
   for(let index=0; index<numbers.length; index++){
@@ -56,14 +57,14 @@ const reverseList = function(numbers){
 
 //Selecting every second element - Given a list of numbers, select every second one
 
-const salectingEach2No = function(numbers){
-  let each2NoArray = [];
+const selectingEvery2ndNo = function(numbers){
+  let every2ndNoArray = [];
   let count = 0;
   for(let index=0; index<numbers.length; index+=2){
-    each2NoArray[count] = numbers[index];
+    every2ndNoArray[count] = numbers[index];
     count++;
   }
-  return each2NoArray;
+  return every2ndNoArray;
 }
 
 //Reverse Fibonacci - Generate a fibonacci sequence of length n in reverse order
@@ -371,7 +372,7 @@ exports.selectEven = selectEven;
 exports.selectOdd = selectOdd;
 exports.sumOfArrayElement = sumOfArrayElement;
 exports.reverseList = reverseList;
-exports.salectingEach2No = salectingEach2No;
+exports.selectingEvery2ndNo = selectingEvery2ndNo;
 exports.reverseFibonacciList = reverseFibonacciList;
 exports.gretestNoInList = gretestNoInList;
 exports.lowestNoInList = lowestNoInList;
