@@ -72,10 +72,10 @@ const selectingEvery2ndNo = function(numbers){
 const reverseFibonacciList = function(range){
   let firstTerm = 0;
   let secondTerm = 1;
-  let fiboNoList = [firstTerm,secondTerm];
-  for(let index=2; index<range; index++){
+  let fiboNoList = [];
+  for(let index=0; index<range; index++){
     let element = firstTerm+secondTerm;
-    fiboNoList.push(element);
+    fiboNoList.push(firstTerm);
     firstTerm = secondTerm;
     secondTerm = element;
   }

@@ -118,6 +118,9 @@ assert.deepEqual(selectingEvery2ndNo([0,0,0,0,0]),[0,0,0]);
 assert.deepEqual(reverseFibonacciList(2),[1,0]);
 assert.deepEqual(reverseFibonacciList([3]),[1,1,0]);
 assert.deepEqual(reverseFibonacciList([8]),[13,8,5,3,2,1,1,0]);
+assert.deepEqual(reverseFibonacciList(),[]);
+assert.deepEqual(reverseFibonacciList(1),[0]);
+assert.deepEqual(reverseFibonacciList("a"),[]);
 
 assert.equal(gretestNoInList([1,26,3,5]),26);
 assert.equal(gretestNoInList([]),undefined);
