@@ -203,14 +203,14 @@ const reverseArrayElements = function(array){
 
 //Index Of a Numberber - Given an array of numbers find the first position of a specified number
 
-const findFirstOccurance = function(numbers,numToChk){
-  let firstOccurance = undefined;
+const findFirstOccurrence = function(numbers,numToChk){
+  let firstOccurrence = undefined;
   for(let index=numbers.length-1; index>=0; index--){
     if(numbers[index] == numToChk){
-      firstOccurance = index;
+      firstOccurrence = index;
     }
   }
-  return firstOccurance;
+  return firstOccurrence;
 }
 
 
@@ -420,7 +420,7 @@ exports.mapElementsLength = mapElementsLength;
 exports.selectEvenNumbers = selectEvenNumbers;
 exports.elementsPartition = elementsPartition;
 exports.findGreatestNumber = findGreatestNumber;
-exports.findFirstOccurance = findFirstOccurance;
+exports.findFirstOccurrence = findFirstOccurrence;
 exports.reverseArrayElements = reverseArrayElements;
 exports.selectEach2ndElement = selectEach2ndElement;
 exports.extractUniqueElements = extractUniqueElements;

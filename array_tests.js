@@ -1,12 +1,12 @@
 const lib = require("./array_functions_library.js");
 const assert = require("assert");
 
-let findFirstOccurance = lib.findFirstOccurance;
-assert.equal(findFirstOccurance([3],3),0);
-assert.equal(findFirstOccurance([0,2],2),1);
-assert.equal(findFirstOccurance([2,3],3),1);
-assert.equal(findFirstOccurance([1,2,3,2,3],3),2);
-assert.equal(findFirstOccurance([1,1,1,1,1,1],1),0);
+let findFirstOccurrence = lib.findFirstOccurrence;
+assert.equal(findFirstOccurrence([3],3),0);
+assert.equal(findFirstOccurrence([0,2],2),1);
+assert.equal(findFirstOccurrence([2,3],3),1);
+assert.equal(findFirstOccurrence([1,2,3,2,3],3),2);
+assert.equal(findFirstOccurrence([1,1,1,1,1,1],1),0);
 
 let isAscending = lib.isAscending;
 assert.equal(isAscending([]),true);
