@@ -22,11 +22,11 @@ assert.equal(isDescending([1,2]),false);
 assert.equal(isDescending(["a","b"]),false);
 assert.equal(isDescending([5,4,4,1,1,0,0]),true);
 
-let extractDigit = lib.extractDigit;
-assert.deepEqual(extractDigit(0),[0]);
-assert.deepEqual(extractDigit(""),[]);
-assert.deepEqual(extractDigit(123),[1,2,3]);
-assert.deepEqual(extractDigit(-2),["-","2"]);
+let extractDigits = lib.extractDigits;
+assert.deepEqual(extractDigits(0),[0]);
+assert.deepEqual(extractDigits(""),[]);
+assert.deepEqual(extractDigits(123),[1,2,3]);
+assert.deepEqual(extractDigits(-2),["-","2"]);
 
 let extractUniqueElements = lib.extractUniqueElements;
 assert.deepEqual(extractUniqueElements([1]),[1]);
@@ -36,11 +36,11 @@ assert.deepEqual(extractUniqueElements([2,2,2,2,2,2,2]),[2]);
 assert.deepEqual(extractUniqueElements(["a","j","a"]),["a","j"]);
 
 let createUnion = lib.createUnion;
-assert.deepEqual(createUnion([],[]),[]);
+assert.deepEqual(createUnion([1],[1]),[1]);
 assert.deepEqual(createUnion([1],[3]),[1,3]);
+assert.deepEqual(createUnion([0,0,0,0],[0,0]),[0]);
 assert.deepEqual(createUnion([1,2,3],[3,4]),[1,2,3,4]);
-assert.deepEqual(createUnion([0,0,0,0],[0,0]),[0,0,0,0]);
-assert.deepEqual(createUnion([1,2,3,3,4],[3,4]),[1,2,3,3,4]);
+assert.deepEqual(createUnion([1,2,3,3,4],[3,4]),[1,2,3,4]);
 
 let findIntersection = lib.findIntersection;
 assert.deepEqual(findIntersection([],[]),[]);
@@ -52,6 +52,7 @@ assert.deepEqual(findIntersection([-1,-2,3],[3,2,1]),[3]);
 let differenceBetweenArray = lib.differenceBetweenArray;
 assert.deepEqual(differenceBetweenArray([],[]),[]);
 assert.deepEqual(differenceBetweenArray([1],[2]),[1]);
+assert.deepEqual(differenceBetweenArray([1,2,2,2],[2]),[1]);
 assert.deepEqual(differenceBetweenArray([1,2,2,7],[1,2,2,7]),[]);
 assert.deepEqual(differenceBetweenArray([1,0,2,4,0],[0,1,2,4]),[]);
 assert.deepEqual(differenceBetweenArray([1,2,2,7],[0,3,3,7]),[1,2,2]);
@@ -91,12 +92,12 @@ assert.deepEqual(selectOddNumbers([2,4,6,8]),[]);
 assert.deepEqual(selectOddNumbers([1,3,5,7]),[1,3,5,7]);
 assert.deepEqual(selectOddNumbers([-3,-2,-1,0]),[-3,-1]);
 
-let sumOfElements = lib.sumOfElements;
-assert.equal(sumOfElements([]),0);
-assert.equal(sumOfElements([0,0,0]),0);
-assert.equal(sumOfElements([1,2,3]),6);
-assert.equal(sumOfElements([1,2,-3]),0);
-assert.equal(sumOfElements([1,2,-2,1]),2);
+let sumOfNumbers = lib.sumOfNumbers;
+assert.equal(sumOfNumbers([]),0);
+assert.equal(sumOfNumbers([0,0,0]),0);
+assert.equal(sumOfNumbers([1,2,3]),6);
+assert.equal(sumOfNumbers([1,2,-3]),0);
+assert.equal(sumOfNumbers([1,2,-2,1]),2);
 
 let reverseElements = lib.reverseElements; 
 assert.deepEqual(reverseElements([]),[]);
@@ -154,18 +155,18 @@ assert.equal(countEvenNumbers([2]),1);
 assert.equal(countEvenNumbers([1,26,3,4,1]),2);
 assert.equal(countEvenNumbers([1,-26,3,-4,1,-0]),3);
 
-let countAbove = lib.countAbove;
-assert.equal(countAbove([],4),0);
-assert.equal(countAbove([5],4),1);
-assert.equal(countAbove([3,4,5,6,1],),0);
-assert.equal(countAbove([3,4,5,6,1],),0);
-assert.equal(countAbove([3,4,5,6,1],4),2);
+let countNumbersAbove = lib.countNumbersAbove;
+assert.equal(countNumbersAbove([],4),0);
+assert.equal(countNumbersAbove([5],4),1);
+assert.equal(countNumbersAbove([3,4,5,6,1],),0);
+assert.equal(countNumbersAbove([3,4,5,6,1],),0);
+assert.equal(countNumbersAbove([3,4,5,6,1],4),2);
 
-let countBelow = lib.countBelow;
-assert.equal(countBelow([],4),0);
-assert.equal(countBelow([0],4),1);
-assert.equal(countBelow([3,4,5,6,1],),0);
-assert.equal(countBelow([3,4,5,6,1],4),2);
+let countNumbersBelow = lib.countNumbersBelow;
+assert.equal(countNumbersBelow([],4),0);
+assert.equal(countNumbersBelow([0],4),1);
+assert.equal(countNumbersBelow([3,4,5,6,1],),0);
+assert.equal(countNumbersBelow([3,4,5,6,1],4),2);
 
 let reverseArrayElements = lib.reverseArrayElements;
 assert.deepEqual(reverseArrayElements([]),[]);
@@ -178,3 +179,6 @@ assert.deepEqual(elementsPartition([],5),[[],[]]);
 assert.deepEqual(elementsPartition([1,2,3],),[[],[]]);
 assert.deepEqual(elementsPartition([5,5,5,5],5),[[5,5,5,5],[]]);
 assert.deepEqual(elementsPartition([1,2,3,4,5,6],3),[[1,2,3],[4,5,6]]);
+
+
+console.log("\n----------congratulations test passed----------\n")

@@ -16,9 +16,9 @@ const isOdd = function(number){
 
 const selectEvenNumbers = function(numbers){
   let evenNumbers = [];
-  for(let index=0; index<numbers.length; index++){
-    if(isEven(numbers[index])){
-      evenNumbers.push(numbers[index]);
+  for(let number of numbers){
+    if(isEven(number)){
+      evenNumbers.push(number);
     }
   }
   return evenNumbers;
@@ -29,9 +29,9 @@ const selectEvenNumbers = function(numbers){
 
 const selectOddNumbers = function(numbers){
   let oddNumbers = [];
-  for(let index=0; index<numbers.length; index++){
-    if(isOdd(numbers[index])){
-      oddNumbers.push(numbers[index]);
+  for(let number of numbers){
+    if(isOdd(number)){
+      oddNumbers.push(number);
     }
   }
   return oddNumbers;
@@ -40,10 +40,10 @@ const selectOddNumbers = function(numbers){
 
 //Sum of a list of numbers - Given a list of numbers, find the sum of all these numbers
 
-const sumOfElements = function(array){
+const sumOfNumbers = function(numbers){
   let sum = 0;
-  for(let index=0; index<array.length; index++){
-    sum = sum+array[index];
+  for(let number of numbers ){
+    sum = sum+number;
   }
   return sum;
 }
@@ -94,9 +94,9 @@ const reverseFibonacci = function(limit){
 
 const findGreatestNumber = function(numbers){
   let greatestNumber = numbers[0];
-  for(let index=1; index<numbers.length; index++){
-    if(numbers[index] > greatestNumber){
-      greatestNumber = numbers[index]
+  for(let number of numbers){
+    if(number > greatestNumber){
+      greatestNumber = number;
     }
   }
   return greatestNumber;
@@ -107,9 +107,9 @@ const findGreatestNumber = function(numbers){
 
 const findLowestNumber = function(numbers){
   let LowestNumber = numbers[0];
-  for(let index=1; index<numbers.length; index++){
-    if(numbers[index] < LowestNumber){
-      LowestNumber = numbers[index]
+  for(let number of numbers){
+    if(number < LowestNumber){
+      LowestNumber = number;
     }
   }
   return LowestNumber;
@@ -118,23 +118,23 @@ const findLowestNumber = function(numbers){
 
 //Average of a list - Given a list of numbers, find the findAverage of that list
 
-const calculateAverage = function(list){
+const calculateAverage = function(numbers){
   let sumOfList = 0;
-  for(let index=0; index<list.length; index++){
-    sumOfList = sumOfList + list[index];
+  for(let number of numbers){
+    sumOfList = sumOfList + number;
   }
-  return sumOfList/list.length;
+  return sumOfList/numbers.length;
 }
 
 
 //Mapping lengths - Given a list of names, generate another array that contains the length of each of the names
 
-const mapElementsLength = function(numbers){
-  let mapElementsLengthArray = [];
-  for(let index=0; index<numbers.length; index++){
-    mapElementsLengthArray[index] = numbers[index].length;
+const mapElementsLength = function(list){
+  let mapElements = [];
+  for(let element of list){
+    mapElements.push(element.length);
   }
-  return mapElementsLengthArray;
+  return mapElements;
 }
 
 
@@ -142,8 +142,8 @@ const mapElementsLength = function(numbers){
 
 const countOddNumbers = function(numbers){
   let count = 0;
-  for(let index=0; index<numbers.length; index++){
-    if(isOdd(numbers[index])){
+  for(let number of numbers){
+    if(isOdd(number)){
       count++;
     }
   }
@@ -155,8 +155,8 @@ const countOddNumbers = function(numbers){
 
 const countEvenNumbers = function(numbers){
   let count = 0;
-  for(let index=0; index<numbers.length; index++){
-    if(isEven(numbers[index])){
+  for(let number of numbers){
+    if(isEven(number)){
       count++;
     }
   }
@@ -166,10 +166,10 @@ const countEvenNumbers = function(numbers){
 
 //Count how many numbers above a certain threshold in an array
 
-const countAbove = function(numbers,range){
+const countNumbersAbove = function(numbers,range){
   let count = 0;
-  for(let index=0; index<numbers.length; index++){
-    if(numbers[index] > range){
+  for(let number of numbers){
+    if(number > range){
       count++;
     }
   }
@@ -179,10 +179,10 @@ const countAbove = function(numbers,range){
 
 //Count how many numbers below a certain threshold in an array
 
-const countBelow = function(numbers,range){
+const countNumbersBelow = function(numbers,range){
   let count = 0;
-  for(let index=0; index<numbers.length; index++){
-    if(numbers[index] < range){
+  for(let number of numbers){
+    if(number < range){
       count++;
     }
   }
@@ -244,7 +244,7 @@ const isDescending = function(list){
 
 //Extract digits - Given a number, extract the digits of a number into an array:
 
-const extractDigit = function(numbers){
+const extractDigits = function(numbers){
   let array = [];
   for(let count=0; count<(""+numbers).length; count++){
     array[count] = (""+numbers)[count];
@@ -255,10 +255,10 @@ const extractDigit = function(numbers){
 
 //Given a array and number and cheks the number is include in the array elements or not.
 
-const isInclude = function(array,noToChk){
+const isInclude = function(array,numToChk){
   let result = false;
-  for(let index=0; index < array.length; index++){
-    if(array[index] == noToChk){
+  for(let element of array){
+    if(element == numToChk){
       result = true;
     }
   }
@@ -271,9 +271,9 @@ const isInclude = function(array,noToChk){
 const extractUniqueElements = function(array){
   let uniqueArray = [];
   uniqueArray[0] = array[0];
-  for (let index=1; index < array.length; index++){
-    if(!isInclude(uniqueArray,array[index])){
-      uniqueArray.push(array[index]);
+  for (let element of array){
+    if(!isInclude(uniqueArray,element)){
+      uniqueArray.push(element);
     }
   }
   return uniqueArray;
@@ -283,12 +283,16 @@ const extractUniqueElements = function(array){
 //Union - Given two arrays, generate a new array consisting of unique elements across both those arrays.
 
 const createUnion = function(list1,list2){
-  let unionArray = list1;
-  let list1Length = list1.length;
-  for(let index=0; index<list2.length; index++){
-    if(!isInclude(unionArray,list2[index])){
-      unionArray[list1Length] = list2[index];
-      list1Length++;
+  let unionArray = [];
+  unionArray[0] = list1[0];
+  for(let number of list1){
+    if(!isInclude(unionArray,number)){
+      unionArray.push(number);
+    }
+  }
+  for(let number of list2){
+     if(!isInclude(unionArray,number)){
+      unionArray.push(number);
     }
   }
   return unionArray;
@@ -298,15 +302,13 @@ const createUnion = function(list1,list2){
 //Intersection - Given two arrays, generate a new array consisting of unique elements that are contained in both arrays.
 
 const findIntersection = function(list1,list2){
-  let createIntersectionArray = [];
-  let countArrayIndex = 0;
-  for(let index=0; index < list1.length; index++){
-    if(isInclude(list2,list1[index])){
-      createIntersectionArray[countArrayIndex] = list1[index];
-      countArrayIndex++;
+  let intersectionArray = [];
+  for(let number of list2){
+    if(isInclude(list1,number)){
+      intersectionArray.push(number);
     }
   }
-  return createIntersectionArray;
+  return intersectionArray;
 }
 
 
@@ -314,11 +316,9 @@ const findIntersection = function(list1,list2){
 
 const differenceBetweenArray = function(list1,list2){
   let uniqInFirst = [];
-  let uniqArrayIndex = 0;
-  for(let index=0; index<list1.length; index++){
-    if(!isInclude(list2,list1[index])){
-      uniqInFirst[uniqArrayIndex] = list1[index];
-      uniqArrayIndex++;
+  for(let number of list1){
+    if(!isInclude(list2,number)){
+      uniqInFirst.push(number);
     }
   }
   return uniqInFirst;
@@ -332,7 +332,6 @@ const isSubset = function(list,subList){
   for(let count=0; count <= (list.length - subList.length); count++){
     if((""+list.slice(count,count + subList.length)) == (""+subList)){
       isSubset = true;
-      break;
     }
   }
   return isSubset;
@@ -343,8 +342,8 @@ const isSubset = function(list,subList){
 
 const findActualLength = function(array){
   let length = 0;
-  for(let index=0; index<array.length; index++){
-    if(array[index] != undefined){
+  for(let element of array){
+    if(element != undefined){
       length++;
     }
   }
@@ -386,12 +385,12 @@ const rotateElements = function(list,numberToRotate){
 
 const elementsPartition = function(numbers,range){
   let partitianArray = [[],[]];
-  for(let index=0; index<numbers.length; index++){
-    if(numbers[index] <= range){
-      partitianArray[0].push(numbers[index]);
+  for(let number of numbers){
+    if(number <= range){
+      partitianArray[0].push(number);
     }
-    if(numbers[index] > range){
-      partitianArray[1].push(numbers[index]);
+    if(number > range){
+      partitianArray[1].push(number);
     }
   }
   return partitianArray;
@@ -399,14 +398,12 @@ const elementsPartition = function(numbers,range){
 
 
 exports.isSubset = isSubset;
-exports.countAbove = countAbove;
-exports.countBelow = countBelow;
 exports.isAscending = isAscending;
 exports.zipElements = zipElements;
 exports.createUnion = createUnion;
 exports.isDescending = isDescending;
-exports.extractDigit = extractDigit;
-exports.sumOfElements = sumOfElements;
+exports.extractDigits = extractDigits;
+exports.sumOfNumbers = sumOfNumbers;
 exports.rotateElements = rotateElements;
 exports.countOddNumbers = countOddNumbers;
 exports.reverseElements = reverseElements;
@@ -416,6 +413,8 @@ exports.countEvenNumbers = countEvenNumbers;
 exports.findIntersection = findIntersection;
 exports.selectOddNumbers = selectOddNumbers;
 exports.calculateAverage = calculateAverage;
+exports.countNumbersAbove = countNumbersAbove;
+exports.countNumbersBelow = countNumbersBelow;
 exports.mapElementsLength = mapElementsLength;
 exports.selectEvenNumbers = selectEvenNumbers;
 exports.elementsPartition = elementsPartition;
