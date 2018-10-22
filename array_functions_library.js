@@ -112,14 +112,12 @@ const calculateAverage = function(numbers){
 
 //Mapping lengths - Given a list of names, generate another array that contains the length of each of the names
 
-const mapElementsLength = function(list){
-  let mapElements = [];
-  for(let element of list){
-    mapElements.push(element.length);
-  }
-  return mapElements;
+const findListLength = function(array){
+  return array.length;
 }
-
+const mapElementsLength = function(list){
+  return list.map(findListLength);
+}
 
 //Counting odd numbers - Write a function to count how many odd numbers are present in an array
 
