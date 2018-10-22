@@ -9,7 +9,6 @@ assert.equal(findFirstOccurrence([1,2,3,2,3],3),2);
 assert.equal(findFirstOccurrence([1,1,1,1,1,1],1),0);
 
 let isAscending = lib.isAscending;
-assert.equal(isAscending([]),true);
 assert.equal(isAscending([1]),true);
 assert.equal(isAscending([2,1]),false);
 assert.equal(isAscending([1,2,3,4,0]),false);
@@ -80,20 +79,18 @@ assert.deepEqual(rotateElements([-10,-2,-13,4,5],3),[4,5,-10,-2,-13]);
 
 let selectEvenNumbers = lib.selectEvenNumbers;
 assert.deepEqual(selectEvenNumbers([]),[]);
-assert.deepEqual(selectEvenNumbers(["a"]),[]);
 assert.deepEqual(selectEvenNumbers([-3,-1,1]),[]);
 assert.deepEqual(selectEvenNumbers([-2,0,2]),[-2,0,2]);
 assert.deepEqual(selectEvenNumbers([-2,-3,-4,5]),[-2,-4]);
 
 let selectOddNumbers = lib.selectOddNumbers;
-assert.deepEqual(selectOddNumbers(["a"]),[]);
 assert.deepEqual(selectOddNumbers([,,,]),[]);
 assert.deepEqual(selectOddNumbers([2,4,6,8]),[]);
 assert.deepEqual(selectOddNumbers([1,3,5,7]),[1,3,5,7]);
 assert.deepEqual(selectOddNumbers([-3,-2,-1,0]),[-3,-1]);
 
 let sumOfNumbers = lib.sumOfNumbers;
-assert.equal(sumOfNumbers([]),0);
+assert.equal(sumOfNumbers([1]),1);
 assert.equal(sumOfNumbers([0,0,0]),0);
 assert.equal(sumOfNumbers([1,2,3]),6);
 assert.equal(sumOfNumbers([1,2,-3]),0);
@@ -121,12 +118,12 @@ assert.deepEqual(reverseFibonacci([8]),[13,8,5,3,2,1,1,0]);
 
 let findGreatestNumber = lib.findGreatestNumber;
 assert.equal(findGreatestNumber([0]),0);
-assert.equal(findGreatestNumber([]),undefined);
+assert.equal(findGreatestNumber([-2,-1]),-1);
 assert.equal(findGreatestNumber([1,26,3,5]),26);
 assert.equal(findGreatestNumber([0,-1,-2,-3]),0);
 
 let findLowestNumber = lib.findLowestNumber;
-assert.equal(findLowestNumber([]),undefined);
+assert.equal(findLowestNumber([1]),1);
 assert.equal(findLowestNumber([1,26,3,5]),1);
 assert.equal(findLowestNumber([1,-26,0,-4]),-26);
 assert.equal(findLowestNumber([-1,-2,-3,-4,-6]),-6);

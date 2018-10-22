@@ -1,3 +1,12 @@
+//complement of a function
+
+const complement = function(funcToComp){
+  return function(argv){
+    return !funcToComp(argv);
+  }
+}
+
+
 //decide a number is even or not - return the answer in true false
 
 const isEven = function(number){
@@ -7,45 +16,30 @@ const isEven = function(number){
 
 //decide a number is odd or not - return the answer in true false
 
-const isOdd = function(number){
-  return Math.abs(number % 2) == 1;
-}
+const isOdd = complement(isEven);
 
 
 //Selecting even numbers - Given a list of numbers, select the ones that are even
 
 const selectEvenNumbers = function(numbers){
-  let evenNumbers = [];
-  for(let number of numbers){
-    if(isEven(number)){
-      evenNumbers.push(number);
-    }
-  }
-  return evenNumbers;
+  return numbers.filter(isEven); 
 }
 
 
 //Selecting odd numbers - Given a list of numbers, select the ones that are odd
 
 const selectOddNumbers = function(numbers){
-  let oddNumbers = [];
-  for(let number of numbers){
-    if(isOdd(number)){
-      oddNumbers.push(number);
-    }
-  }
-  return oddNumbers;
+  return numbers.filter(isOdd);
 }
 
 
 //Sum of a list of numbers - Given a list of numbers, find the sum of all these numbers
 
+const sum = function(num1,num2){
+  return num1+num2;
+}
 const sumOfNumbers = function(numbers){
-  let sum = 0;
-  for(let number of numbers ){
-    sum = sum+number;
-  }
-  return sum;
+  return numbers.reduce(sum);
 }
 
 
@@ -92,38 +86,27 @@ const reverseFibonacci = function(limit){
 
 //Greatest number in a list - Given a list of numbers, find the greatest number in that sequence
 
+const gretestNumber = function(num1,num2){
+  return Math.max(num1,num2);
+}
 const findGreatestNumber = function(numbers){
-  let greatestNumber = numbers[0];
-  for(let number of numbers){
-    if(number > greatestNumber){
-      greatestNumber = number;
-    }
-  }
-  return greatestNumber;
+  return numbers.reduce(gretestNumber);
 }
 
 
 //Lowest number in a list - Given a list of numbers, find the lowest number in that sequence
 
-const findLowestNumber = function(numbers){
-  let LowestNumber = numbers[0];
-  for(let number of numbers){
-    if(number < LowestNumber){
-      LowestNumber = number;
-    }
-  }
-  return LowestNumber;
+const lowestNumber = function(num1,num2){
+  return Math.min(num1,num2);
 }
-
+const findLowestNumber = function(numbers){
+  return numbers.reduce(lowestNumber);
+}
 
 //Average of a list - Given a list of numbers, find the findAverage of that list
 
 const calculateAverage = function(numbers){
-  let sumOfList = 0;
-  for(let number of numbers){
-    sumOfList = sumOfList + number;
-  }
-  return sumOfList/numbers.length;
+  return numbers.reduce(sum)/numbers.length;
 }
 
 
@@ -141,26 +124,14 @@ const mapElementsLength = function(list){
 //Counting odd numbers - Write a function to count how many odd numbers are present in an array
 
 const countOddNumbers = function(numbers){
-  let count = 0;
-  for(let number of numbers){
-    if(isOdd(number)){
-      count++;
-    }
-  }
-  return count;
+  return numbers.filter(isOdd).length;
 }
 
 
 //Counting even numbers - Write a function to count how many even numbers are present in an array
 
 const countEvenNumbers = function(numbers){
-  let count = 0;
-  for(let number of numbers){
-    if(isEven(number)){
-      count++;
-    }
-  }
-  return count;
+  return numbers.filter(isEven).length; 
 }
 
 
