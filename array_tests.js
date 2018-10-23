@@ -11,8 +11,10 @@ assert.equal(findFirstOccurrence([1,1,1,1,1,1],1),0);
 let isAscending = lib.isAscending;
 assert.equal(isAscending([1]),true);
 assert.equal(isAscending([2,1]),false);
+assert.equal(isAscending([1,2,1,2]),false);
+assert.equal(isAscending([1,2,3,4,5]),true);
 assert.equal(isAscending([1,2,3,4,0]),false);
-assert.equal(isAscending([,1,2,-3,4,0]),false);
+assert.equal(isAscending([1,2,-3,4,20]),false);
 
 let isDescending = lib.isDescending;
 assert.equal(isDescending([]),true);
@@ -54,7 +56,7 @@ assert.deepEqual(differenceBetweenArray([1],[2]),[1]);
 assert.deepEqual(differenceBetweenArray([1,2,2,2],[2]),[1]);
 assert.deepEqual(differenceBetweenArray([1,2,2,7],[1,2,2,7]),[]);
 assert.deepEqual(differenceBetweenArray([1,0,2,4,0],[0,1,2,4]),[]);
-assert.deepEqual(differenceBetweenArray([1,2,2,7],[0,3,3,7]),[1,2,2]);
+assert.deepEqual(differenceBetweenArray([1,2,2,7],[0,3,3,7]),[1,2]);
 
 let isSubset = lib.isSubset;
 assert.equal(isSubset([1],[1]),true);

@@ -177,29 +177,35 @@ const findFirstOccurrence = function(numbers,numToChk){
 
 //Ascending order - Given an array of numbers, check if the array is in ascending order
 
-const isAscending = function(list){
-  let isAscending = true;
-  for(let index=0; index < list.length; index++){
-    if(list[index]>list[index+1]){
-      isAscending = false;
-      break;
-    }
+const isNumAscending = function(previousVal,currentVal){
+  if(previousVal.num <= currentVal){
+    previousVal.num = currentVal;
+    return previousVal;
   }
-  return isAscending;
+  previousVal.result = false;
+  return previousVal;
+}
+
+const isAscending = function(list){
+  let initializer = {num:list[0], result:true};
+  return list.reduce(isNumAscending,initializer).result;
 }
 
 
 //Descending order - Given an array of numbers, check if the array is in descending order
 
-const isDescending = function(list){
-  let isDescending = true;
-  for(let index=0; index < list.length; index++){
-    if(list[index]<list[index+1]){
-      isDescending = false;
-      break;
-    }
+const isNumDescending = function(previousVal,currentVal){
+   if(previousVal.num >= currentVal){
+    previousVal.num = currentVal;
+    return previousVal;
   }
-  return isDescending;
+  previousVal.result = false;
+  return previousVal;
+}
+
+const isDescending = function(list){
+  let initializer = {num:list[0],result:true};
+  return list.reduce(isNumDescending,initializer).result;
 }
 
 
@@ -248,37 +254,36 @@ const createUnion = function(list1,list2){
 
 //Intersection - Given two arrays, generate a new array consisting of unique elements that are contained in both arrays.
 
-const findIntersection = function(list1,list2){
-  let intersectionArray = [];
-  for(let number of list2){
-    if(isInclude(list1,number)){
-      intersectionArray.push(number);
-    }
+const checkIntersection = function(array){
+  return function(element){
+    return isInclude(array,element);
   }
-  return intersectionArray;
+}
+const findIntersection = function(list1,list2){
+  let intersectionArray = checkIntersection(list2);
+  return extractUniqueElements(list1.filter(intersectionArray));
 }
 
 
 //Difference - Given two arrays, generate a new array that consists of unique elements that are present in the first array, but not in the second.
 
-const differenceBetweenArray = function(list1,list2){
-  let uniqInFirst = [];
-  for(let number of list1){
-    if(!isInclude(list2,number)){
-      uniqInFirst.push(number);
-    }
+const checkDiffrence = function(array){
+  return function(element){
+    return !isInclude(array,element);
   }
-  return uniqInFirst;
 }
-
+const differenceBetweenArray = function(list1,list2){
+  let filteredArray = checkDiffrence(list2);
+  return extractUniqueElements(list1.filter(filteredArray));
+}
 
 //isSubset - Given two arrays, check if the second is a proper subset of the first.
 
 const isSubset = function(list,subList){
-  let isSubset = false;
-  for(let count=0; count <= (list.length - subList.length); count++){
-    if((""+list.slice(count,count + subList.length)) == (""+subList)){
-      isSubset = true;
+  let isSubset = true;
+  for(let count=0; count < subList.length; count++){
+    if(!isInclude(list,subList[count])){
+      isSubset = false;
     }
   }
   return isSubset;
