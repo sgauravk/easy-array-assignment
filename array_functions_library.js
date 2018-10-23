@@ -226,34 +226,23 @@ const isInclude = function(array,numToChk){
 
 //Unique - Given an array, remove duplicate elements and return an array of only unique elements
 
-const extractUniqueElements = function(array){
-  let uniqueArray = [];
-  uniqueArray[0] = array[0];
-  for (let element of array){
-    if(!isInclude(uniqueArray,element)){
-      uniqueArray.push(element);
-    }
+const filterUnique = function(array,element){
+  if(!isInclude(array,element)){
+    array.push(element);
   }
-  return uniqueArray;
+  return array;
+}
+
+const extractUniqueElements = function(array){
+  return array.reduce(filterUnique,[]);
 }
 
 
 //Union - Given two arrays, generate a new array consisting of unique elements across both those arrays.
 
 const createUnion = function(list1,list2){
-  let unionArray = [];
-  unionArray[0] = list1[0];
-  for(let number of list1){
-    if(!isInclude(unionArray,number)){
-      unionArray.push(number);
-    }
-  }
-  for(let number of list2){
-     if(!isInclude(unionArray,number)){
-      unionArray.push(number);
-    }
-  }
-  return unionArray;
+  let unionArray = list1.concat(list2);
+  return extractUniqueElements(unionArray);
 }
 
 
