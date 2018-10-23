@@ -1,8 +1,8 @@
 //complement of a function
 
-const complement = function(funcToComp){
+const complement = function(functionToComplement){
   return function(argv){
-    return !funcToComp(argv);
+    return !functionToComplement(argv);
   }
 }
 
@@ -70,7 +70,7 @@ const reverseFibonacci = function(limit){
   let secondTerm = 1;
   let fiboNumberList = [];
   for(let index=0; index<limit; index++){
-    let element = firstTerm+secondTerm;
+    let element = firstTerm + secondTerm;
     fiboNumberList.push(firstTerm);
     firstTerm = secondTerm;
     secondTerm = element;
@@ -107,8 +107,8 @@ const calculateAverage = function(numbers){
 
 //Mapping lengths - Given a list of names, generate another array that contains the length of each of the names
 
-const findListLength = function(array){
-  return array.length;
+const findListLength = function(list){
+  return list.length;
 }
 const mapElementsLength = function(list){
   return list.map(findListLength);
@@ -135,9 +135,9 @@ const aboveThershold = function(limit){
     return number>limit;
   }
 }
-const countNumbersAbove = function(array,range){
+const countNumbersAbove = function(list,range){
   let limit = aboveThershold(range);
-  return array.filter(limit).length;
+  return list.filter(limit).length;
 }
 
 
@@ -156,9 +156,9 @@ const countNumbersBelow = function(numbers,range){
 
 //Reversing an Array - Given an array, write a function that provides a reversed version of the same array *without* changing the contents of the original array.
 
-const reverseArrayElements = function(array){
-  let revArray = array.slice(0);
-  return revArray.reverse();
+const reverseList = function(list){
+  let revList = list.slice(0);
+  return revList.reverse();
 }
 
 
@@ -194,9 +194,9 @@ const isAscending = function(list){
 
 //Descending order - Given an array of numbers, check if the array is in descending order
 
-const isNumDescending = function(previousVal,currentVal){
-   if(previousVal.num >= currentVal){
-    previousVal.num = currentVal;
+const isOrderDescending = function(previousVal,currentVal){
+  if(previousVal.number >= currentVal){
+    previousVal.number = currentVal;
     return previousVal;
   }
   previousVal.result = false;
@@ -204,43 +204,29 @@ const isNumDescending = function(previousVal,currentVal){
 }
 
 const isDescending = function(list){
-  let initializer = {num:list[0],result:true};
-  return list.reduce(isNumDescending,initializer).result;
+  let initializer = {number:list[0], result:true};
+  return list.reduce(isOrderDescending,initializer).result;
 }
 
 
 //Extract digits - Given a number, extract the digits of a number into an array:
 
-const stringToNum = function(num){
-  return +num;
-}
 const extractDigits = function(numbers){
-  return (""+numbers).split('').map(stringToNum);
-}
-
-
-//Given a array and number and cheks the number is include in the array elements or not.
-
-const isInclude = function(array,numToChk){
-  let result = false;
-  if (array.includes(numToChk)){
-  result = true;
-  }
-  return result;
+  return numbers.toString().split('').map(number => +number);
 }
 
 
 //Unique - Given an array, remove duplicate elements and return an array of only unique elements
 
-const filterUnique = function(array,element){
-  if(!isInclude(array,element)){
-    array.push(element);
+const filterUnique = function(list,element){
+  if(!list.includes(element)){
+    list.push(element);
   }
-  return array;
+  return list;
 }
 
-const extractUniqueElements = function(array){
-  return array.reduce(filterUnique,[]);
+const extractUniqueElements = function(list){
+  return list.reduce(filterUnique,[]);
 }
 
 
@@ -254,9 +240,9 @@ const createUnion = function(list1,list2){
 
 //Intersection - Given two arrays, generate a new array consisting of unique elements that are contained in both arrays.
 
-const checkIntersection = function(array){
+const checkIntersection = function(list){
   return function(element){
-    return isInclude(array,element);
+    return list.includes(element);
   }
 }
 const findIntersection = function(list1,list2){
@@ -267,9 +253,9 @@ const findIntersection = function(list1,list2){
 
 //Difference - Given two arrays, generate a new array that consists of unique elements that are present in the first array, but not in the second.
 
-const checkDiffrence = function(array){
+const checkDiffrence = function(list){
   return function(element){
-    return !isInclude(array,element);
+    return !list.includes(element);
   }
 }
 const differenceBetweenArray = function(list1,list2){
@@ -277,12 +263,13 @@ const differenceBetweenArray = function(list1,list2){
   return extractUniqueElements(list1.filter(filteredArray));
 }
 
+
 //isSubset - Given two arrays, check if the second is a proper subset of the first.
 
 const isSubset = function(list,subList){
   let isSubset = true;
   for(let count=0; count < subList.length; count++){
-    if(!isInclude(list,subList[count])){
+    if(!list.includes(subList[count])){
       isSubset = false;
     }
   }
@@ -293,7 +280,7 @@ const isSubset = function(list,subList){
 //Zip - insert elements from two arrays
 
 const zipElements = function(list1,list2){
-  range = Math.min(list1.length,list2.length);
+  let range = Math.min(list1.length,list2.length);
   let zipArray = [];
   for(let index=0; index < range; index++){
     zipArray[index] = [list1[index],list2[index]];
@@ -331,9 +318,10 @@ exports.isSubset = isSubset;
 exports.isAscending = isAscending;
 exports.zipElements = zipElements;
 exports.createUnion = createUnion;
+exports.reverseList = reverseList;
 exports.isDescending = isDescending;
-exports.extractDigits = extractDigits;
 exports.sumOfNumbers = sumOfNumbers;
+exports.extractDigits = extractDigits;
 exports.rotateElements = rotateElements;
 exports.countOddNumbers = countOddNumbers;
 exports.reverseElements = reverseElements;
@@ -350,7 +338,6 @@ exports.selectEvenNumbers = selectEvenNumbers;
 exports.elementsPartition = elementsPartition;
 exports.findGreatestNumber = findGreatestNumber;
 exports.findFirstOccurrence = findFirstOccurrence;
-exports.reverseArrayElements = reverseArrayElements;
 exports.selectEach2ndElement = selectEach2ndElement;
 exports.extractUniqueElements = extractUniqueElements;
 exports.differenceBetweenArray = differenceBetweenArray;

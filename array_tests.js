@@ -1,4 +1,4 @@
-const lib = require("./array_functions_library.js");
+const lib = require("./array_assignment_library.js");
 const assert = require("assert");
 
 let findFirstOccurrence = lib.findFirstOccurrence;
@@ -167,11 +167,11 @@ assert.equal(countNumbersBelow([0],4),1);
 assert.equal(countNumbersBelow([3,4,5,6,1],),0);
 assert.equal(countNumbersBelow([3,4,5,6,1],4),2);
 
-let reverseArrayElements = lib.reverseArrayElements;
-assert.deepEqual(reverseArrayElements([]),[]);
-assert.deepEqual(reverseArrayElements([1]),[1]);
-assert.deepEqual(reverseArrayElements([1,1,1]),[1,1,1]);
-assert.deepEqual(reverseArrayElements([1,2,3]),[3,2,1]);
+let reverseList = lib.reverseList;
+assert.deepEqual(reverseList([]),[]);
+assert.deepEqual(reverseList([1]),[1]);
+assert.deepEqual(reverseList([1,1,1]),[1,1,1]);
+assert.deepEqual(reverseList([1,2,3]),[3,2,1]);
 
 let elementsPartition = lib.elementsPartition;
 assert.deepEqual(elementsPartition([],5),[[],[]]);
