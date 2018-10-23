@@ -296,26 +296,10 @@ const isSubset = function(list,subList){
 }
 
 
-//actul length of a array it can not count the empty element
-
-const findActualLength = function(array){
-  let length = 0;
-  for(let element of array){
-    if(element != undefined){
-      length++;
-    }
-  }
-  return length;
-}
-
-
 //Zip - insert elements from two arrays
 
 const zipElements = function(list1,list2){
-  let range = findActualLength(list1);
-  if(findActualLength(list1) > findActualLength(list2)){
-    range = findActualLength(list2);
-  }
+  range = Math.min(list1.length,list2.length);
   let zipArray = [];
   for(let index=0; index < range; index++){
     zipArray[index] = [list1[index],list2[index]];
@@ -327,15 +311,9 @@ const zipElements = function(list1,list2){
 //Rotate - creates a new array by rotating elements from the given array.
 
 const rotateElements = function(list,numberToRotate){
-  let rotateArray = [];
-  if(list.length > numberToRotate){
-    rotateArray = list.slice(numberToRotate);
-  }
-  let rotateArrayLength = rotateArray.length;
-  for(let index=0; index < list.length-rotateArrayLength; index++){
-    rotateArray.push(list[index]);
-  }
-  return rotateArray;
+  let part1 = list.slice(numberToRotate);
+  let part2 = list.slice(0,numberToRotate);
+  return part1.concat(part2);
 }
 
 
