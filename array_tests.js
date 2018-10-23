@@ -25,7 +25,7 @@ let extractDigits = lib.extractDigits;
 assert.deepEqual(extractDigits(0),[0]);
 assert.deepEqual(extractDigits(""),[]);
 assert.deepEqual(extractDigits(123),[1,2,3]);
-assert.deepEqual(extractDigits(-2),["-","2"]);
+assert.deepEqual(extractDigits(420),[4,2,0]);
 
 let extractUniqueElements = lib.extractUniqueElements;
 assert.deepEqual(extractUniqueElements([1]),[1]);

@@ -46,12 +46,7 @@ const sumOfNumbers = function(numbers){
 //Printing reverse - Given a list of numbers, PRINT the list in reverse order
 
 const reverseElements = function(numbers){
-  for(let index = 0; index<=(numbers.length-1)/2; index++){
-    storeElement = numbers[index];
-    numbers[index] = numbers[numbers.length-1-index]
-    numbers[numbers.length-1-index] = storeElement;
-  }
-  return numbers;
+  return numbers.reverse();
 }
 
 
@@ -135,38 +130,35 @@ const countEvenNumbers = function(numbers){
 
 //Count how many numbers above a certain threshold in an array
 
-const countNumbersAbove = function(numbers,range){
-  let count = 0;
-  for(let number of numbers){
-    if(number > range){
-      count++;
-    }
+const aboveThershold = function(limit){
+  return function(number){
+    return number>limit;
   }
-  return count;
+}
+const countNumbersAbove = function(array,range){
+  let limit = aboveThershold(range);
+  return array.filter(limit).length;
 }
 
 
 //Count how many numbers below a certain threshold in an array
 
-const countNumbersBelow = function(numbers,range){
-  let count = 0;
-  for(let number of numbers){
-    if(number < range){
-      count++;
-    }
+const belowThershold = function(limit){
+  return function(number){
+    return number<limit;
   }
-  return count;
+}
+const countNumbersBelow = function(numbers,range){
+  let limit = belowThershold(range);
+  return numbers.filter(limit).length;
 }
 
 
 //Reversing an Array - Given an array, write a function that provides a reversed version of the same array *without* changing the contents of the original array.
 
 const reverseArrayElements = function(array){
-  let revArray = [];
-  for(let index=array.length-1; index>=0; index--){
-    revArray[array.length-1-index] = array[index];
-  }
-  return revArray
+  let revArray = array.slice(0);
+  return revArray.reverse();
 }
 
 
@@ -213,12 +205,11 @@ const isDescending = function(list){
 
 //Extract digits - Given a number, extract the digits of a number into an array:
 
+const stringToNum = function(num){
+  return +num;
+}
 const extractDigits = function(numbers){
-  let array = [];
-  for(let count=0; count<(""+numbers).length; count++){
-    array[count] = (""+numbers)[count];
-  }
-  return array;
+  return (""+numbers).split('').map(stringToNum);
 }
 
 
@@ -226,10 +217,8 @@ const extractDigits = function(numbers){
 
 const isInclude = function(array,numToChk){
   let result = false;
-  for(let element of array){
-    if(element == numToChk){
-      result = true;
-    }
+  if (array.includes(numToChk)){
+  result = true;
   }
   return result;
 }
