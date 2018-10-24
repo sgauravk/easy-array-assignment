@@ -53,13 +53,13 @@ const reverseElements = function(numbers){
 //Selecting every second element - Given a list of numbers, select every second one
 
 const selectEach2ndElement = function(numbers){
-  let every2ndNumberArray = [];
+  let filteredList = [];
   let count = 0;
   for(let index=0; index<numbers.length; index+=2){
-    every2ndNumberArray[count] = numbers[index];
+    filteredList[count] = numbers[index];
     count++;
   }
-  return every2ndNumberArray;
+  return filteredList;
 }
 
 
@@ -69,7 +69,7 @@ const reverseFibonacci = function(limit){
   let firstTerm = 0;
   let secondTerm = 1;
   let fiboNumberList = [];
-  for(let index=0; index<limit; index++){
+  for(let count=0; count<limit; count++){
     let element = firstTerm + secondTerm;
     fiboNumberList.push(firstTerm);
     firstTerm = secondTerm;
