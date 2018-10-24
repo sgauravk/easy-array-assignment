@@ -164,10 +164,10 @@ const reverseList = function(list){
 
 //Index Of a Numberber - Given an array of numbers find the first position of a specified number
 
-const findFirstOccurrence = function(numbers,numToChk){
+const findFirstOccurrence = function(numbers,numToCheck){
   let firstOccurrence = undefined;
   for(let index=numbers.length-1; index>=0; index--){
-    if(numbers[index] == numToChk){
+    if(numbers[index] == numToCheck){
       firstOccurrence = index;
     }
   }
