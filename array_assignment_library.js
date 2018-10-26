@@ -1,8 +1,8 @@
 //complement of a function
 
-const complement = function(functionToComplement){
+const complement = function(Function){
   return function(argv){
-    return !functionToComplement(argv);
+    return !Function(argv);
   }
 }
 
@@ -45,13 +45,21 @@ const sumOfNumbers = function(numbers){
 
 //Printing reverse - Given a list of numbers, PRINT the list in reverse order
 
+const reverse = function(list){
+  for(let index=0; index<list.length/2; index++){
+    let storeValue = list[index];
+    list[index] = list[list.length - index - 1];
+    list[list.length - index - 1] = storeValue;
+  }
+  return list;
+}
+
 const reverseElements = function(numbers){
-  return numbers.reverse();
+  return reverse(numbers);
 }
 
 
 //Selecting every second element - Given a list of numbers, select every second one
-
 const selectEach2ndElement = function(numbers){
   let filteredList = [];
   let count = 0;
@@ -66,16 +74,16 @@ const selectEach2ndElement = function(numbers){
 //Reverse Fibonacci - Generate a fibonacci sequence of length n in reverse order
 
 const reverseFibonacci = function(limit){
-  let firstTerm = 0;
-  let secondTerm = 1;
-  let fiboNumberList = [];
+  let startingTerm = 0; 
+  let nextTerm = 1;
+  let fibonacciList = [];
   for(let count=0; count<limit; count++){
-    let element = firstTerm + secondTerm;
-    fiboNumberList.push(firstTerm);
-    firstTerm = secondTerm;
-    secondTerm = element;
+    let sumOfTerms = startingTerm + nextTerm;
+    fibonacciList.unshift(startingTerm);
+    startingTerm = nextTerm;
+    nextTerm = sumOfTerms;
   }
-  return reverseElements(fiboNumberList);
+  return fibonacciList;
 }
 
 
@@ -84,6 +92,7 @@ const reverseFibonacci = function(limit){
 const gretestNumber = function(num1,num2){
   return Math.max(num1,num2);
 }
+
 const findGreatestNumber = function(numbers){
   return numbers.reduce(gretestNumber);
 }
@@ -94,6 +103,7 @@ const findGreatestNumber = function(numbers){
 const lowestNumber = function(num1,num2){
   return Math.min(num1,num2);
 }
+
 const findLowestNumber = function(numbers){
   return numbers.reduce(lowestNumber);
 }
@@ -110,6 +120,7 @@ const calculateAverage = function(numbers){
 const findListLength = function(list){
   return list.length;
 }
+
 const mapElementsLength = function(list){
   return list.map(findListLength);
 }
@@ -135,9 +146,9 @@ const aboveThershold = function(limit){
     return number>limit;
   }
 }
-const countNumbersAbove = function(list,range){
-  let limit = aboveThershold(range);
-  return list.filter(limit).length;
+
+const countNumbersAbove = function(list,limit){
+  return list.filter(aboveThershold(limit)).length;
 }
 
 
@@ -148,9 +159,9 @@ const belowThershold = function(limit){
     return number<limit;
   }
 }
-const countNumbersBelow = function(numbers,range){
-  let limit = belowThershold(range);
-  return numbers.filter(limit).length;
+
+const countNumbersBelow = function(numbers,limit){
+  return numbers.filter(belowThershold(limit)).length;
 }
 
 
@@ -165,13 +176,11 @@ const reverseList = function(list){
 //Index Of a Numberber - Given an array of numbers find the first position of a specified number
 
 const findFirstOccurrence = function(numbers,numToCheck){
-  let firstOccurrence = undefined;
-  for(let index=numbers.length-1; index>=0; index--){
+  for(let index=0; index<numbers.length; index++){
     if(numbers[index] == numToCheck){
-      firstOccurrence = index;
+      return index;
     }
   }
-  return firstOccurrence;
 }
 
 
